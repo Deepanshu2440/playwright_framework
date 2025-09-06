@@ -9,5 +9,6 @@ class OrderHistoryPage:
     def history(self, order):
         self.page.locator(".tr").filter(has_text=order)
         self.page.get_by_role('button', name='VIEW').nth(0).click()
+        return self.page
 
 

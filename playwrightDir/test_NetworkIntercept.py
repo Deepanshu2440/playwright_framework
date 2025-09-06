@@ -1,7 +1,9 @@
 import time
 
+import pytest
 from playwright.sync_api import Page, expect, Playwright
 
+from utils.readJSON import read_json
 from utils.apiBase import ApiUtils
 
 data_to_mock = {"data": [], "message": "No Orders"}
@@ -42,13 +44,14 @@ def test_NetworkIntercept_response(page: Page):
     page.get_by_role('button', name='  View').first.click()
     print(page.locator(".blink_me").text_content())
 
-
+credentials = read_json('credentials.json', "user_credentials_single")
 # now we are directly accessing local storage via playwright in browser to overpass login
+@pytest.mark.smoke
 def test_NetworkIntercept_localStorage(playwright: Playwright):
     browser = playwright.chromium.launch(headless=False)
     context = browser.new_context()
     page = context.new_page()
-    token = ApiUtils().apiLogin(playwright)
+    token = ApiUtils().apiLogin(playwright,credentials)
     print(token)
     page.add_init_script(f"""localStorage.setItem('token','{token}')""")
 

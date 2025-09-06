@@ -14,6 +14,7 @@ credentials = read_json('credentials.json', "user_credentials")
 
 # now lets say we have many login to do so we can make our dunction run in parameterize way so that it will run with different id one by one
 @pytest.mark.parametrize('credentials', credentials)
+@pytest.mark.smoke
 def test_ui_validation(playwright: Playwright, page, credentials):
     # creating order via api
     order = ApiUtils().apiCreateOrder(playwright, credentials)
@@ -36,5 +37,11 @@ def test_ui_validation(playwright: Playwright, page, credentials):
 
 
 
+# //to run all tests via cli
+#  pytest - for all
+#  pystest -s - with logs
+#  pystes -m smoke - with markers
+#  pyetst -k  web_ui -- with matching keyword
 
-
+# PARALELL EXECUTION
+  # pyetst -n 3 - parallel execution -- pip install pytest-xdist

@@ -8,3 +8,5 @@ class LoginPage:
         self.page.get_by_placeholder('email@example.com').fill(credentials['username'])
         self.page.get_by_placeholder('enter your passsword').fill(credentials['password'])
         self.page.get_by_role('button').click()
+
+        return self.page

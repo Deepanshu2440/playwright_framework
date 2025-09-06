@@ -9,5 +9,6 @@ class OrderDashboard:
     def dashboard(self, orderId):
         self.page.get_by_role('button', name='  ORDERS').click()
         expect(self.page.get_by_text(orderId)).to_be_visible()
+        return self.page
 
 

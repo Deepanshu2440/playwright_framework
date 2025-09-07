@@ -3,8 +3,8 @@ import pytest
 
 from pageObjects.login import LoginPage
 from pageObjects.orderDashboard import OrderDashboard
-from playwrightDir.pageObjects.orderDetailPage import OrderDetailPage
-from playwrightDir.pageObjects.orderHistotyPage import OrderHistoryPage
+from pageObjects.orderDetailPage import OrderDetailPage
+from pageObjects.orderHistotyPage import OrderHistoryPage
 from utils.apiBase import ApiUtils
 from playwright.sync_api import Playwright
 
